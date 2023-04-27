@@ -7,7 +7,7 @@ s=0
 m=1
 
 for i in range(n):
-    a=int(input("Ingrese un Valor"))
+    a=int(input("Ingrese un Valor: "))
     if (a//2)==(a/2):
         s=s+a
     else:
