@@ -2,16 +2,16 @@ v=int(input("Ingrese la cantidad de votos: "))
 while v<=0:
     print("Error, valor mal ingresado")
     v=int(input("Ingrese la cantidad de votos: "))
+f=0
+c=0
+x=0
+n=0
 for i in range(v):
-    voto:input("Ingrese el valor del voto(EJ: F,C,X o _) ")
-    while voto!="F"or"C"or"X"or"_":
+    voto=input("Ingrese el valor del voto(EJ: F,C,X o _) ")
+    while voto!="F"and"C"and"X"and"_":
         print("Caracteres no validos")
         voto:input("Ingrese el valor del voto(EJ: F,C,X o _) ")
 
-    f=0
-    c=0
-    x=0
-    n=0
 
     if voto=="F":
         f=f+1
