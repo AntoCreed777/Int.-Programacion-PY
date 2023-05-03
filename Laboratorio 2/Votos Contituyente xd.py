@@ -7,10 +7,10 @@ c=0
 x=0
 n=0
 for i in range(v):
-    voto=input("Ingrese el valor del voto(EJ: F,C,X o _) ")
+    voto=str(input("Ingrese el valor del voto(EJ: F,C,X o _): "))
     while voto!="F"and"C"and"X"and"_":
         print("Caracteres no validos")
-        voto:input("Ingrese el valor del voto(EJ: F,C,X o _) ")
+        voto=str(input("Ingrese el valor del voto(EJ: F,C,X o _): "))
 
 
     if voto=="F":
