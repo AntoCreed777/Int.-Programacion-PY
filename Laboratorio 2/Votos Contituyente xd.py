@@ -1,0 +1,1 @@
+v=int(input("Ingrese la cantidad de votos: "))
