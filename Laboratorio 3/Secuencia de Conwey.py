@@ -6,26 +6,27 @@ v=int(input("Valor a procesar: "))
 while v<0 or v>=10:
     print("Error, valor mal ingresado")
     v=int(input("Valor a procesar: "))
-m=n
-g=0
-i=0
-c=0
 b=-1
-while n>0:
+c=1
+p=1
+x=1
+g=0
+print(v)
+
+while x<=n:
     a=(v%10)
     if a==b:
-        d=d+1
+        c=c+1
     else:
-       if b!=-1:
-            g=g+d*(10**(i-1))+b*(10**(i-2))
-       else:
-           print(a)
-       d=1
-       b=a
-       i=i+2
-    if v==0:
-        v=g
+        g=g+c*(10**p)+a*(10**(p-1))
+        b=a
+        p=p+2
+        c=1
     v=v//10
-    n=n-1
-    if n!=(m-1):
+    if v==0:
         print(g)
+        v=g
+        g=0
+        p=1
+        x=x+1
+        b=-1
