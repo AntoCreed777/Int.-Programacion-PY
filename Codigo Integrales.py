@@ -1,22 +1,27 @@
+from numba import jit
 def factorial(n):
     a=1
     while n>0:
         a=a*n
         n=n-1
     return a
+@jit
 def coseno(a,r):
     c=0
     for b in range(r):
          c+=(((-1)**b)*(a**(2*b)))/factorial(2*b)
     return(c)
+@jit
 def seno(a,r):
     c=0
     for b in range(r):
          c+=(((-1)**b)*(a**(2*b+1)))/factorial(2*b+1)
     return(c)
+@jit
 def integral(vi,vf,p):
     I=int(((vf**(p+1))-(vi**(p+1)))/(p+1))
     print(I)
+@jit
 def integralseno(vi,vf,p):
     c=0
     i=0
@@ -26,6 +31,7 @@ def integralseno(vi,vf,p):
         c+=b*seno((vi+i),50)
         i=i+b
     print(c)
+@jit
 def integralcoseno(vi,vf,p):
     c=0
     i=0
