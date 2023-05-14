@@ -31,7 +31,7 @@ def integralseno(vi,vf,p):
         c+=b*seno((vi+i),50)
         i=i+b
     print(c)
-@jit
+@jit   
 def integralcoseno(vi,vf,p):
     c=0
     i=0
