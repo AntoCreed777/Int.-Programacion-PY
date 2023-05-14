@@ -35,7 +35,6 @@ def integralcoseno(vi,vf,p):
         c+=b*coseno((vi+i),50)
         i=i+b
     print(c)
-
 q=str(input("¿Que tipo de Integral desea hacer, Normal o Trigonometrico?? "))
 while q!="Normal"and q!="Trigonometrico":
     q=str(input("Valor mal ingresado, vuelva a intentarlo\n¿Que tipo de Integral desea hacer, Normal o Trigonometrico?? "))
