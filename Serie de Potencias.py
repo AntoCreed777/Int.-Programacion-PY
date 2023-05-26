@@ -10,11 +10,11 @@ def potencia(x,e):
     return(aux)
 a=-1
 while a<0:
-    x=int(input("Introdusca el numero a elevar: "))
+    x=int(input("Introduzca el numero a elevar: "))
     while x<0 or x>100:
         print("Valor fuera de rango")
         x=int(input("Introdusca el numero a elevar: "))
-    e=int(input("Introdusca la potencia: "))
+    e=int(input("Introduzca la potencia: "))
     while e<0 or e>1000:
         print("Valor fuera de rango")
         e=int(input("Introdusca la potencia: "))
