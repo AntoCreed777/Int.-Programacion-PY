@@ -18,7 +18,7 @@ while x!=0:
     digitos=digitos+1
 
 p=digitos*2-1
-restantes=[]
+jugador=[]
 coordenada=[]
 for i in range(N):
     x=i+1
@@ -31,11 +31,31 @@ for i in range(N):
         y=y.zfill(digitos)
         coordenada.insert(2,y)
         coordenada=("").join(coordenada)
-        restantes.insert(1,coordenada)
+        jugador.insert(1,coordenada)
         c=eliminarcaracter(coordenada,p,digitos)
         coordenada=[]
         coordenada.insert(1,c)
         y=int(y)
     coordenada=[]
     x=int(x)
-print(restantes)
+computadora=jugador
+
+barcostotales=int(input("Ingrese la cantidad de barcos en juego por jugador: "))
+while barcostotales<=2 or barcostotales>N:
+    barcostotales=int(input(f"----------\nValor fuera de rango\nDebe ser mayor a 2 y menor o igual a {N}\nIngrese la cantidad de barcos en juego por jugador: "))
+
+barcosjugador={}
+sinbarcosjugador=jugador
+for i in range(barcostotales):
+    for j in range(3):
+        coordenada=int(input(f"Ingrese la {j+1}°Coordenada de su barco: "))
+        coordenada=str(coordenada)
+        coordenada=coordenada.zfill(digitos*2)
+        if sinbarcosjugador.count(coordenada)==0:
+            coordenada=int(input(f"Celda invalida\nIngrese de nuevo la {j+1}°Coordenada de su barco: "))
+            coordenada=str(coordenada)
+            coordenada=coordenada.zfill(digitos*2)
+        barcosjugador.setdefault((i+1),coordenada)
+        sinbarcosjugador.remove(coordenada)
+print(barcosjugador)
+print(sinbarcosjugador)
