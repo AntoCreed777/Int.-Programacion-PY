@@ -8,7 +8,7 @@ def eliminarcaracter(s,p,digitos):
     return lista
 
 N=int(input("Ingrese el tamaño del tablero: "))
-while N<10:
+while N<10 or N>1000:
     N=int(input("----------\nValor fuera de rango, debe ser mayor o igual a 10\nIngrese el tamaño del tablero: "))
 
 x=N
@@ -47,15 +47,41 @@ while barcostotales<=2 or barcostotales>N:
 barcosjugador={}
 sinbarcosjugador=jugador
 for i in range(barcostotales):
-    for j in range(3):
-        coordenada=int(input(f"Ingrese la {j+1}°Coordenada de su barco: "))
+    coordenada=int(input(f"Ingrese la Coordenada Central de su {i+1}°barco: "))
+    coordenada=str(coordenada)
+    coordenada=coordenada.zfill(digitos*2)
+    if sinbarcosjugador.count(coordenada)==0:
+        coordenada=int(input(f"----------\nCelda invalida\nIngrese de nuevo la Coordenada Central de su {i+1}°barco: "))
         coordenada=str(coordenada)
         coordenada=coordenada.zfill(digitos*2)
-        if sinbarcosjugador.count(coordenada)==0:
-            coordenada=int(input(f"Celda invalida\nIngrese de nuevo la {j+1}°Coordenada de su barco: "))
-            coordenada=str(coordenada)
-            coordenada=coordenada.zfill(digitos*2)
-        barcosjugador.setdefault((i+1),coordenada)
-        sinbarcosjugador.remove(coordenada)
+    orientacion=str(input(f"Ingrese la horientacion de su {i+1}!Barco(V o H): "))
+    while orientacion !="V" and orientacion !="H":
+        orientacion=str(input(f"----------\nValor erroneo, vuelva a ingresarlo\nIngrese la horientacion de su {i+1}°Barco(V o H): "))
+    if orientacion == "V":
+        coordenada=int(coordenada)
+        coordenada=coordenada-10**digitos
+        coordenada=str(coordenada)
+        coordenada=coordenada.zfill(digitos*2)
+        for q in range(3):
+                sinbarcosjugador.remove(coordenada)
+                barcosjugador.setdefault((i+1),coordenada)
+                coordenada=int(coordenada)
+                coordenada=coordenada+10**digitos
+                coordenada=str(coordenada)
+                coordenada=coordenada.zfill(digitos*2)
+    if orientacion == "H":
+        coordenada=int(coordenada)
+        coordenada=coordenada-1
+        coordenada=str(coordenada)
+        coordenada=coordenada.zfill(digitos*2)
+        for q in range(3):
+                sinbarcosjugador.remove(coordenada)
+                barcosjugador.setdefault((i+1),coordenada)
+                coordenada=int(coordenada)
+                coordenada=coordenada+1
+                coordenada=str(coordenada)
+                coordenada=coordenada.zfill(digitos*2)
+ 
+        #FALTA RESTRINGIR LA SELECCION DE CELDAS DEPENDIENDO DEL LUGAR
 print(barcosjugador)
 print(sinbarcosjugador)
