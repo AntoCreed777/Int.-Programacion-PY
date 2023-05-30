@@ -6,6 +6,41 @@ def eliminarcaracter(s,p,digitos):
         a=a-1
     lista=("").join(lista)
     return lista
+def coordenadasverticales(coordenada):
+        guardadomomentaneo={}
+        coordenada=int(coordenada)
+        coordenada=coordenada-1
+        coordenada=str(coordenada)
+        coordenada=coordenada.zfill(digitos*2)
+        for q in range(3):
+                guardadomomentaneo.setdefault((i+1),coordenada)
+                coordenada=int(coordenada)
+                coordenada=coordenada+1
+                coordenada=str(coordenada)
+                coordenada=coordenada.zfill(digitos*2)
+        return(guardadomomentaneo)
+def coordenadashorizontales(coordenada):
+        guardadomomentaneo={}
+        coordenada=int(coordenada)
+        coordenada=coordenada-10**digitos
+        coordenada=str(coordenada)
+        coordenada=coordenada.zfill(digitos*2)
+        for q in range(3):
+                guardadomomentaneo.setdefault(coordenada,(i+1))
+                coordenada=int(coordenada)
+                coordenada=coordenada+10**digitos
+                coordenada=str(coordenada)
+                coordenada=coordenada.zfill(digitos*2)
+        return(guardadomomentaneo)
+def coordenadacentral():
+    coordenada=int(input(f"Ingrese la Coordenada Central de su {i+1}°barco: "))
+    coordenada=str(coordenada)
+    coordenada=coordenada.zfill(digitos*2)
+    if sinbarcosjugador.count(coordenada)==0:
+        coordenada=int(input(f"----------\nCelda invalida\nIngrese de nuevo la Coordenada Central de su {i+1}°barco: "))
+        coordenada=str(coordenada)
+        coordenada=coordenada.zfill(digitos*2)
+    return(coordenada)
 
 N=int(input("Ingrese el tamaño del tablero: "))
 while N<10 or N>1000:
@@ -47,40 +82,18 @@ while barcostotales<=2 or barcostotales>N:
 barcosjugador={}
 sinbarcosjugador=jugador
 for i in range(barcostotales):
-    coordenada=int(input(f"Ingrese la Coordenada Central de su {i+1}°barco: "))
-    coordenada=str(coordenada)
-    coordenada=coordenada.zfill(digitos*2)
-    if sinbarcosjugador.count(coordenada)==0:
-        coordenada=int(input(f"----------\nCelda invalida\nIngrese de nuevo la Coordenada Central de su {i+1}°barco: "))
-        coordenada=str(coordenada)
-        coordenada=coordenada.zfill(digitos*2)
+    coordenada=coordenadacentral()
     orientacion=str(input(f"Ingrese la horientacion de su {i+1}!Barco(V o H): "))
     while orientacion !="V" and orientacion !="H":
         orientacion=str(input(f"----------\nValor erroneo, vuelva a ingresarlo\nIngrese la horientacion de su {i+1}°Barco(V o H): "))
     if orientacion == "V":
-        coordenada=int(coordenada)
-        coordenada=coordenada-10**digitos
-        coordenada=str(coordenada)
-        coordenada=coordenada.zfill(digitos*2)
-        for q in range(3):
-                sinbarcosjugador.remove(coordenada)
-                barcosjugador.setdefault((i+1),coordenada)
-                coordenada=int(coordenada)
-                coordenada=coordenada+10**digitos
-                coordenada=str(coordenada)
-                coordenada=coordenada.zfill(digitos*2)
+        while sinbarcosjugador.count(coordenadasverticales(coordenada))==0:
+             coordenada=coordenadacentral
+        barcosjugador.setdefault(coordenadasverticales,(i+1))
     if orientacion == "H":
-        coordenada=int(coordenada)
-        coordenada=coordenada-1
-        coordenada=str(coordenada)
-        coordenada=coordenada.zfill(digitos*2)
-        for q in range(3):
-                sinbarcosjugador.remove(coordenada)
-                barcosjugador.setdefault((i+1),coordenada)
-                coordenada=int(coordenada)
-                coordenada=coordenada+1
-                coordenada=str(coordenada)
-                coordenada=coordenada.zfill(digitos*2)
+        while sinbarcosjugador.count(coordenadashorizontales(coordenada))==0:
+             coordenada=coordenadacentral
+        barcosjugador.setdefault(coordenadashorizontales,(i+1))
  
         #FALTA RESTRINGIR LA SELECCION DE CELDAS DEPENDIENDO DEL LUGAR
 print(barcosjugador)
