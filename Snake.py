@@ -27,11 +27,6 @@ for i in range(N):
     matriz.append(x)
 ##############################################################
 while True:
-    try: 
-        print(input());
-    except:
-        break
-
-    for i in range(N):
+    for i in range(len(matriz)):
         print(f"{matriz[i]}\n")
     os.system("cls")
