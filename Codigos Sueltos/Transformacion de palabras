@@ -3,7 +3,7 @@ def validacion(string,L):
         return(False)
     else:
         return(True)
-def palabraparecida(Q,palabras,similitud):
+def palabraparecidaf(palabras,similitud):
     for i in range(len(palabras)):
         if i ==0:
             palabraparecida=palabras[i]
@@ -17,15 +17,15 @@ def palabraparecida(Q,palabras,similitud):
 Q=int(input("Ingrese la cantidad de palabras: "))
 L=int(input("Ingrese la cantidad de letras: "))
 
-palabramaster=str("Ingrese la palabra master: ")
-if validacion(palabramaster)==False:
+palabramaster=str(input("Ingrese la palabra master: "))
+if validacion(palabramaster,L)==False:
     palabramaster=str(f"\nDebe tener {L} letras\nIngrese la palabra master: ")
 palabras=[]
 for i in range(Q-1):
-    palabra=str("Ingrese la palabra: ")
-    if validacion(palabra)==False:
-        palabra=str(f"\nDebe tener {L} letras\nIngrese la palabra: ")
-        palabras.append(palabra)
+    palabra=str(input("Ingrese la palabra: "))
+    if validacion(palabra,L)==False:
+        palabra=str(input(f"\nDebe tener {L} letras\nIngrese la palabra: "))
+    palabras.append(palabra)
 
 similitud=[]
 for i in range(Q-1):
@@ -40,8 +40,8 @@ for i in range(Q-1):
 resultado=[]
 resultado.append(palabramaster)
 
-for i in range(Q):
-    palabraparecida=palabraparecida(Q,palabras,similitud)
+for i in range(Q-1):
+    palabraparecida=palabraparecidaf(palabras,similitud)
     resultado.append(palabraparecida)
     palabras.remove(palabraparecida)
 print(resultado)
