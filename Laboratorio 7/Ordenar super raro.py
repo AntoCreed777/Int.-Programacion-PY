@@ -12,7 +12,7 @@ for i in range(N):
 print(vector)
 for i in range(N):
     mayor=max(vector[:,i])
-    posicionf=np.where(vector==mayor)[0][0]
+    posicionf=np.where(vector[:,i]==mayor)[0][0]
     for j in range(N):
         posicionant=posicionf-(j+1)
         if posicionant==-1:
