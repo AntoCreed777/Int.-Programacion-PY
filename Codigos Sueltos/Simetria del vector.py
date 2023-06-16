@@ -2,7 +2,7 @@ import numpy as np
 import random
 def simetria(vector):
     for i in range(N):
-        for j in range(N):
+        for j in range(i+1,N):
             if vector[i][j]!=vector[j][i]:
                 return("No es simetrica")
     return("Es simetrica")
