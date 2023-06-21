@@ -1,0 +1,51 @@
+def preguntas(N):
+    if N=="":
+        return "nada"
+    if N[0]=="-":
+        return "negativo"
+    elif N.isdigit()==False:
+        return "nonum"
+    N=float(N)
+    if N==0:
+        return "escero"
+    else:
+        return True
+def ingresonumero(mensaje):
+    N=str(input(f"{mensaje}"))
+    while True:
+        aux=preguntas(N)
+        if aux==True:
+            N=int(N)
+            return(N)
+        if aux=="nada":
+            N=str(input(f"\nPor favor, ingrese un dato\n{mensaje}"))
+        if aux=="negativo":
+            N=str(input(f"\nSolo se aceptan numeros positivos\n{mensaje}"))
+        if aux=="nonum":
+            N=str(input(f"\nSolo se aceptan numeros\n{mensaje}"))
+        if aux=="escero":
+            N=str(input(f"\nEl 0 no es valido\n{mensaje}"))
+def cantidadelemnto(list):
+    aux=list[0]
+    cantidad=list.count(aux)
+    for i in range(cantidad):
+        list.remove(aux)
+    return aux,cantidad
+
+N=ingresonumero("Ingrese la cantidad de correos a recibir: ")
+
+TLD=[]
+for i in range(N):
+    correo=str(input(f"\nIngrese su {i+1}°Correo:"))
+    correo=correo.split("@")
+    aux=correo[1].split(".")
+    TLD.append(aux[len(aux)-1])
+
+Cantidadmayor=0
+
+while len(TLD)!=0:
+    aux,cantidadaux=cantidadelemnto(TLD)
+    if cantidadaux>Cantidadmayor:
+        Valormasrepetido=aux
+        Cantidadmayor=cantidadaux
+print(f"\nEl TLD que mas se repite es '{Valormasrepetido}' repitiendose {Cantidadmayor} veces.")
